@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Rayons{% endblock %}
+
+{% block body %}
+
+<div class="card-header">
+    <a class="btn-back text-secondary" href="{{ path('app_default_index') }}">
+        <i class="fas fa-2x fa-arrow-circle-left"></i>
+    </a>
+    <h3>
+        <i class="fas fa-store"></i>
+        Recherche de "{{ recherche }}" :
+        <span class="badge badge-pill badge-info">{{ resultat | length  }}</span>
+        produit(s)
+    </h3>
+</div>
+<div class="card-body row">
+    {% for article in resultat %}
+    <div class="col-md-4">
+
+        <div class="card clickable" onclick="location = '/info/R401/fr/panier/ajouter/9'" data-toggle="tooltip" title="" data-placement="bottom" data-html="true" data-container="body" data-original-title="Ajouter &lt;b&gt;Oreo&lt;/b&gt; à mon panier">
+            <img src="{{ asset(article.visuel) }}" class="card-img-produit" alt="{{ article.libelle }}">
+            <div class="card-body">
+                <h4 class="card-title">{{ article.libelle }}</h4>
+                <p class="card-text">
+                    <i>{{ article.texte }}</i>
+                </p>
+                <h2>
+                    <span class="badge badge-primary">
+                        <i class="fas fa-cart-plus"></i>{{ article.prix }}€
+                    </span>
+                </h2>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
