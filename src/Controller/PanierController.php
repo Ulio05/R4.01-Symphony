@@ -16,15 +16,34 @@ final class PanierController extends AbstractController
         return $this->render('panier/index.html.twig', [
             'controller_name' => 'PanierController',
             'panier' => $panier->getContenu(),
+            'prixTotal' => $panier->getTotal(),
+            'nbProduit' => 1,//$panier->getNombreProduits(),
         ]);
     }
 
     #[Route('{_locale}/panier/ajouter/{idProduit}/{quantite}', name: 'app_panier_ajouter')]
-    public function ajouter(PanierService $panier): Response
+    public function ajouter(int $idProduit, int $quantite,PanierService $panier): Response
     {
-        return $this->render('panier/index.html.twig', [
-            'controller_name' => 'PanierController',
-            'panier' => $panier->getContenu(),
-        ]);
+        $panier->ajouterProduit($idProduit, $quantite);
+        return $this->redirectToRoute('app_panier_index');
+    }
+
+    #[Route('{_locale}/panier/enlever/{idProduit}/{quantite}', name: 'app_panier_enlever')]
+    public function enlever(int $idProduit, int $quantite,PanierService $panier): Response
+    {
+        $panier->enleverProduit($idProduit, $quantite);
+        return $this->redirectToRoute('app_panier_index');
+    }
+
+    #[Route('{_locale}/panier/vider', name: 'app_panier_vider')]
+    public function vider(int $idProduit,PanierService $panier): Response
+    {
+        $panier->vider();
+        return $this->redirectToRoute('app_panier_index');
+    }
+
+
+    public function nombreProduits(PanierService $panier): Response {
+        return new Response($panier->getNombreProduits());
     }
 }

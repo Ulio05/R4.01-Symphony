@@ -49,6 +49,7 @@ class PanierService
     // Ajouter au panier le produit $idProduit en quantite $quantite
     public function ajouterProduit(int $idProduit, int $quantite = 1) : void
     {
+        $this->panier += [$idProduit => $quantite];
         $this->panier[$idProduit] = $quantite;
     }
 
@@ -74,7 +75,11 @@ class PanierService
     //   => un tableau d'éléments [ "produit" => un objet produit, "quantite" => sa quantite ]
     public function getContenu() : array
     {
-        return $this->panier;
+        $res = [];
+        foreach ($this->panier as $cle => $val) {
+            $res += ["produit" => $this->boutique->findProduitById($cle), "quantite" => $val];
+        }
+        return $res;
     }
 
 }
