@@ -17,7 +17,7 @@ final class PanierController extends AbstractController
             'controller_name' => 'PanierController',
             'panier' => $panier->getContenu(),
             'prixTotal' => $panier->getTotal(),
-            'nbProduit' => 1,//$panier->getNombreProduits(),
+            'nbProduit' => $panier->getNombreProduits(),
         ]);
     }
 
@@ -32,6 +32,13 @@ final class PanierController extends AbstractController
     public function enlever(int $idProduit, int $quantite,PanierService $panier): Response
     {
         $panier->enleverProduit($idProduit, $quantite);
+        return $this->redirectToRoute('app_panier_index');
+    }
+
+    #[Route('{_locale}/panier/enlever/{idProduit}', name: 'app_panier_supprimer')]
+    public function supprimer(int $idProduit,PanierService $panier): Response
+    {
+        $panier->supprimerProduit($idProduit);
         return $this->redirectToRoute('app_panier_index');
     }
 

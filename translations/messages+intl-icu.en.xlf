@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="5vaiGTv" resname="default.index.acceuil">
         <source>default.index.acceuil</source>
-        <target>Home</target>
+        <target>Home </target>
       </trans-unit>
       <trans-unit id="txgvtKx" resname="default.index.boutique">
         <source>default.index.boutique</source>
@@ -32,7 +32,11 @@
       <trans-unit id="X.mmV2B" resname="default.index.search">
           <source>default.index.search</source>
           <target>search item(s)...</target>
-        </trans-unit>-->
+        </trans-unit>
+      <trans-unit id="X.mmV2B" resname="default.index.panier">
+          <source>default.index.panier</source>
+          <target>Item(s) </target>-->
+      </trans-unit>
     </body>
   </file>
 </xliff>

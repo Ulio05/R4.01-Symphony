@@ -78,20 +78,20 @@
                                 {{ article.produit.prix }}€
                             </td>
                             <td>
-                                <a href="/info/R401/fr/panier/enlever/1">
+                                <a href="{{ path('app_panier_enlever',{'idProduit' : article.produit.id, 'quantite' : 1}) }}">
                                     <i class="fas fa-minus-square text-muted"></i>
                                 </a>
-                                1
-                                <a href="/info/R401/fr/panier/ajouter/1">
+                                {{ article.quantite }}
+                                <a href="{{ path('app_panier_ajouter', {'idProduit' : article.produit.id, 'quantite': 1}) }}">
                                     <i class="fas fa-plus-square text-muted"></i>
                                 </a>
                             </td>
                             <td class="text-right">
-                                {{ article.produit.prix*article.quantite }}€
+                                {{ article.produit.prix * article.quantite }}€
                             </td>
                             <td>
-                                <a href="/info/R401/fr/panier/supprimer/1">
-                                    <i class="fas fa-trash text-muted" data-toggle="tooltip" title="" data-placement="right" data-html="true" data-original-title="Supprimer &lt;b&gt;{{ article.produit.libelle }}&lt;/b&gt;"></i>
+                                <a href="{{ path('app_panier_supprimer', {'idProduit': article.produit.id}) }}">
+                                    <i class="fas fa-trash text-muted" data-toggle="tooltip" title="" data-placement="right" data-html="true" data-original-title="Supprimer &lt;b&gt;{{ article.produit.prix }}&lt;/b&gt;"></i>
                                 </a>
                             </td>
                         </tr>
@@ -103,10 +103,10 @@
                                 Total
                             </th>
                             <th class="text-right">
-                                {{ prixTotal}}€
+                                {{ prixTotal }}€
                             </th>
                             <th>
-                                <a href="/info/R401/fr/panier/vider">
+                                <a href="{{ path('app_panier_vider') }}">
                                     <i class="fas fa-trash text-muted" data-toggle="tooltip" title="" data-placement="right" data-html="true" data-original-title="Vider tout le Panier"></i>
                                 </a>
                             </th>

@@ -51,6 +51,7 @@ class DefaultController extends AbstractController
     )]
      public function contact(): Response
      {
+
          return $this->render('default/contact.html.twig',[]);
      }
 }

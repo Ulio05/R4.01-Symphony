@@ -32,7 +32,11 @@
       <trans-unit id="X.mmV2B" resname="default.index.search">
           <source>default.index.search</source>
           <target>chercher produit(s)...</target>
-        </trans-unit>-->
+        </trans-unit>
+        <trans-unit id="X.mmV2B" resname="default.index.panier">
+                  <source>default.index.panier</source>
+                  <target>Produit(s) </target>
+              </trans-unit>-->
     </body>
   </file>
 </xliff>
